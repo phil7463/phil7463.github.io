@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!-- saved from url=(0029)https://bin.webduino.io/laxoq -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+<!--
+Created using JS Bin
+http://bin.webduino.io
+
+Copyright (c) 2020 by anonymous (http://bin.webduino.io/laxoq/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Webduino Blockly Demo 05</title>
+  <script type="text/javascript" async="" src="./index_files/linkid.js.下載"></script><script async="" src="./index_files/analytics.js.下載"></script><script src="./index_files/jquery.min.js.下載"></script>
+  <script src="./index_files/webduino-all.min.js.下載"></script>
+  <script src="./index_files/MessageTransport.min.js.下載"></script>
+  <script src="./index_files/webduino-blockly.min.js.下載"></script>
+  <script src="./index_files/firebase.min.js.下載"></script>
+  <script src="./index_files/runtime.min.js.下載"></script>
+  <script src="./index_files/BitBuzzer-blockly.js.下載"></script>
+  <link rel="stylesheet" href="./index_files/bootstrap.min.css">
+  <script src="./index_files/jquery.min.js(1).下載"></script>
+  <script src="./index_files/popper.min.js.下載"></script>
+  <script src="./index_files/bootstrap.min.js.下載"></script>
+
+<style id="jsbin-css">
+.db5 {
+  font-size: 24px;
+  outline: none;
+  margin: 0 10px 10px 0;
+  pointer-events: auto!important;
+}
+
+button:hover {
+  box-shadow: 2px 2px 5px #888;
+}
+</style>
+</head>
+
+<body>
+  <h1>王大帥哥的音階<div><button id="demo-area-05-btn1" class="btn btn-primary">do</button>
+    <button id="demo-area-05-btn2" class="btn btn-secondary">re</button>
+    <button id="demo-area-05-btn3" class="btn btn-success">mi</button>
+    <button id="demo-area-05-btn4" class="btn btn-info">fa</button>
+    <button id="demo-area-05-btn5" class="btn btn-warning">so</button></div>
+    <button id="demo-area-05-btn6" class="btn btn-danger">la</button>
+    <button id="demo-area-05-btn7" class="btn btn-dark">si</button>
+
+<script>
+var buzzer;
+
+function buzzer_music(m) {
+  var musicNotes = {};
+  musicNotes.notes = [];
+  musicNotes.tempos = [];
+  if (m[0].notes.length > 1) {
+    for (var i = 0; i < m.length; i++) {
+      if (Array.isArray(m[i].notes)) {
+        var cn = musicNotes.notes.concat(m[i].notes);
+        musicNotes.notes = cn;
+      } else {
+        musicNotes.notes.push(m[i].notes);
+      }
+      if (Array.isArray(m[i].tempos)) {
+        var ct = musicNotes.tempos.concat(m[i].tempos);
+        musicNotes.tempos = ct;
+      } else {
+        musicNotes.tempos.push(m[i].tempos);
+      }
+    }
+  } else {
+    musicNotes.notes = [m[0].notes];
+    musicNotes.tempos = [m[0].tempos];
+  }
+  return musicNotes;
+}
+
+
+boardReady({board: 'Bit', device: 'bit773e37', transport: 'mqtt'}, function (board) {
+  board.samplingInterval = 250;
+  buzzer = getBuzzer(board, '25');
+  document.getElementById("demo-area-05-btn1").addEventListener("click",function(){
+    buzzer.play(buzzer_music([  {notes:"C4",tempos:"1"}]).notes ,buzzer_music([  {notes:"C4",tempos:"1"}]).tempos );
+  });
+  document.getElementById("demo-area-05-btn2").addEventListener("click",function(){
+    buzzer.play(buzzer_music([  {notes:"D4",tempos:"1"}]).notes ,buzzer_music([  {notes:"D4",tempos:"1"}]).tempos );
+  });
+  document.getElementById("demo-area-05-btn3").addEventListener("click",function(){
+    buzzer.play(buzzer_music([  {notes:"E4",tempos:"1"}]).notes ,buzzer_music([  {notes:"E4",tempos:"1"}]).tempos );
+  });
+  document.getElementById("demo-area-05-btn4").addEventListener("click",function(){
+    buzzer.play(buzzer_music([  {notes:"DS4",tempos:"1"}]).notes ,buzzer_music([  {notes:"DS4",tempos:"1"}]).tempos );
+  });
+  document.getElementById("demo-area-05-btn5").addEventListener("click",function(){
+    buzzer.play(buzzer_music([  {notes:"F4",tempos:"1"}]).notes ,buzzer_music([  {notes:"F4",tempos:"1"}]).tempos );
+  });
+  document.getElementById("demo-area-05-btn6").addEventListener("click",function(){
+    buzzer.play(buzzer_music([  {notes:"G4",tempos:"1"}]).notes ,buzzer_music([  {notes:"G4",tempos:"1"}]).tempos );
+  });
+  document.getElementById("demo-area-05-btn7").addEventListener("click",function(){
+    buzzer.play(buzzer_music([  {notes:"A4",tempos:"1"}]).notes ,buzzer_music([  {notes:"A4",tempos:"1"}]).tempos );
+  });
+});
+</script>
+<script src="./index_files/edit.js.下載"></script>
+<script>jsbinShowEdit && jsbinShowEdit({"static":"https://bin.webduino.io","root":"https://bin.webduino.io"});</script>
+<script src="./index_files/eventsource.js.下載"></script>
+<script src="./index_files/spike.js.下載"></script>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-65365242-1', 'auto');
+ga('require', 'linkid', 'linkid.js');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+
+</script>
+
+</h1></body><a id="edit-with-js-bin" href="https://bin.webduino.io/laxoq/edit" style="top: 0px;">Edit in JS Bin <img src="./index_files/favicon.png" width="16" height="16"></a><link rel="stylesheet" href="./index_files/edit.css"></html>
